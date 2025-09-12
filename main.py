@@ -1,6 +1,6 @@
 import os
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-
+import matplotlib.pyplot as plt
 
 #parameters
 IMAGE_SIZE = (224, 224)
@@ -47,3 +47,16 @@ if __name__ == "__main__":
     print("Validation samples:", val_gen.samples)
     print("Test samples:", test_gen.samples)
     print("Classes:", train_gen.class_indices)
+
+    #visualization
+    x_batch, y_batch = next(train_gen)
+    print("Batch shape:", x_batch.shape)
+    print("Labels shape:", y_batch.shape)
+
+    plt.figure(figsize=(10, 6))
+    for i in range(9):
+        plt.subplot(3, 3, i+1)
+        plt.imshow(x_batch[i])
+        plt.title("PNEUMONIA" if y_batch[i] == 1 else "NORMAL")
+        plt.axis("off")
+    plt.show()
