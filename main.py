@@ -1,6 +1,8 @@
 import os
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import matplotlib.pyplot as plt
+from tensorflow.keras import layers, models
+
 
 #parameters
 IMAGE_SIZE = (224, 224)
@@ -40,6 +42,25 @@ def load_data(data_dir, image_size, batch_size):
     )
     return train_gen, val_gen, test_gen
 
+def build_cnn(image_size):
+    model = models.Sequential([
+        layers.Conv2D(32, (3,3), activation='relu', input_shape=(*image_size, 3)),
+        layers.MaxPooling2D((2,2)),
+
+        layers.Conv2D(64, (3,3), activation='relu'),
+        layers.MaxPooling2D((2,2)),
+
+        layers.Conv2D(128, (3,3), activation='relu'),
+        layers.MaxPooling2D((2,2)),
+
+        layers.Flatten(),
+        layers.Dense(128, activation='relu'),
+        layers.Dropout(0.5),
+        layers.Dense(1, activation='sigmoid') 
+    ])
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    return model
+
 if __name__ == "__main__":
     print("Hello world")
     train_gen, val_gen, test_gen = load_data(DATA_DIR, IMAGE_SIZE, BATCH_SIZE)
@@ -60,3 +81,7 @@ if __name__ == "__main__":
         plt.title("PNEUMONIA" if y_batch[i] == 1 else "NORMAL")
         plt.axis("off")
     plt.show()
+
+    #model creation
+    model = build_cnn(IMAGE_SIZE)
+    model.summary()
