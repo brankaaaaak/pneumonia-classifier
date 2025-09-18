@@ -9,7 +9,7 @@ from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 IMAGE_SIZE = (224, 224)
 BATCH_SIZE = 32
 EPOCHS = 10
-DATA_DIR = r'C:\Users\User\Desktop\archive\chest_xray' #path to the data
+DATA_DIR = r'C:\Users\User\Desktop\archive\chest_xray_split' #path to the data
 
 def load_data(data_dir, image_size, batch_size):
     train_datagen = ImageDataGenerator(
