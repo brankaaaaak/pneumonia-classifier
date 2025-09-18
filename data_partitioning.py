@@ -40,3 +40,8 @@ for cls, imgs in all_images.items():
     for img in test_imgs:
         shutil.copy(img, os.path.join(OUTPUT_DIR, "test", cls))
 
+for split in ["train", "val", "test"]:
+    print(f"\n{split.upper()}:")
+    for cls in CLASSES:
+        count = len(os.listdir(os.path.join(OUTPUT_DIR, split, cls)))
+        print(f"  {cls}: {count} images")
