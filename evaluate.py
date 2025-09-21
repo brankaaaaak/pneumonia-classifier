@@ -1,6 +1,8 @@
 from tensorflow.keras.models import load_model
 import os
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from sklearn.metrics import classification_report
+import numpy as np
 
 IMAGE_SIZE = (224, 224)
 BATCH_SIZE = 32
@@ -30,3 +32,12 @@ if __name__ == "__main__":
     # evaluation
     test_loss, test_acc = model.evaluate(test_gen)
     print(f"📊 Test Accuracy: {test_acc:.4f}, Test Loss: {test_loss:.4f}")
+
+    # === predictions on the test set ===
+    y_pred = model.predict(test_gen)
+    y_pred_classes = (y_pred > 0.5).astype("int32").flatten()
+    y_true = test_gen.classes
+
+    # === classification report ===
+    print("\n📊 Classification Report:")
+    print(classification_report(y_true, y_pred_classes, target_names=list(test_gen.class_indices.keys())))
