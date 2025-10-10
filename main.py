@@ -10,8 +10,8 @@ from sklearn.utils.class_weight import compute_class_weight
 # parameters
 IMAGE_SIZE = (224, 224)
 BATCH_SIZE = 32
-EPOCHS = 20
-DATA_DIR = r"C:\Users\User\Desktop\archive\chest_xray_split"  # path to dataset
+EPOCHS = 50
+DATA_DIR = r"C:\Users\User\Desktop\archive\chest_xray_split_2"  # path to dataset
 
 # load and preprocess data
 def load_data(data_dir, image_size, batch_size):
@@ -102,8 +102,8 @@ def train_model(model, train_gen, val_gen, epochs):
     print("Class Weights:", class_weights)
 
     callbacks = [
-        EarlyStopping(monitor='val_loss', patience=4, restore_best_weights=True),
-        ModelCheckpoint('best_pneumonia_model.h5', save_best_only=True),
+        EarlyStopping(monitor='val_loss', patience=20, restore_best_weights=True),
+        ModelCheckpoint('best_pneumonia_model.keras', save_best_only=True),
         ReduceLROnPlateau(monitor='val_loss', factor=0.3, patience=2, min_lr=1e-6)
     ]
 
