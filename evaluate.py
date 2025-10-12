@@ -3,11 +3,12 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from sklearn.metrics import classification_report, confusion_matrix, roc_curve, auc
 import matplotlib.pyplot as plt
 import seaborn as sns
-import numpy as np
 import os
 
-MODEL_PATH = "best_pneumonia_model.h5"
-DATA_DIR = r"C:\Users\User\Desktop\archive\chest_xray_split"
+#MODEL_PATH = "best_pneumonia_model.keras"
+#MODEL_PATH = "best_pneumonia_resnet.keras"
+MODEL_PATH = "best_pneumonia_resnet_finetuned.keras"
+DATA_DIR = r"C:\Users\User\Desktop\archive\chest_xray_split_2"
 IMAGE_SIZE = (224, 224)
 BATCH_SIZE = 32
 
