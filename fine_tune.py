@@ -46,9 +46,9 @@ def fine_tune_resnet(model_path):
     if base_model is None:
         raise ValueError("Base model (ResNet) nije pronađen!")
 
-    for layer in base_model.layers[:-100]:
+    for layer in base_model.layers[:-30]:
         layer.trainable = False
-    for layer in base_model.layers[-100:]:
+    for layer in base_model.layers[-30:]:
         layer.trainable = True
 
     model.compile(optimizer=Adam(learning_rate=5e-6),
