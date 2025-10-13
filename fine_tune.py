@@ -9,7 +9,7 @@ import os, numpy as np, matplotlib.pyplot as plt
 IMAGE_SIZE = (224, 224)
 BATCH_SIZE = 32
 EPOCHS = 25
-DATA_DIR = r"C:\Users\User\Desktop\archive\chest_xray_split_2"
+DATA_DIR = r"C:\Users\User\Desktop\archive\chest_xray_split"
 MODEL_PATH = "best_pneumonia_resnet.keras"
 
 def load_data(data_dir, image_size, batch_size):

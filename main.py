@@ -11,10 +11,11 @@ from sklearn.utils.class_weight import compute_class_weight
 IMAGE_SIZE = (224, 224)
 BATCH_SIZE = 32
 EPOCHS = 30
-DATA_DIR = r"C:\Users\User\Desktop\archive\chest_xray_split_2"  # path to dataset
+DATA_DIR = r"C:\Users\User\Desktop\archive\chest_xray_split"  # path to dataset
 
 # load and preprocess data
 def load_data(data_dir, image_size, batch_size):
+    
     train_datagen = ImageDataGenerator(
         rescale=1./255,
         rotation_range=25,
@@ -77,12 +78,12 @@ def build_cnn(image_size):
         layers.Dropout(0.5),
 
         layers.Dense(128, activation='relu', kernel_regularizer=regularizers.l2(0.001)),
-        layers.Dropout(0.5), #0.4
+        layers.Dropout(0.5), 
 
         layers.Dense(1, activation='sigmoid')
     ])
 
-    optimizer = Adam(learning_rate=5e-5)  #1e-4
+    optimizer = Adam(learning_rate=5e-5)  
 
     model.compile(
         optimizer=optimizer,
@@ -102,7 +103,7 @@ def train_model(model, train_gen, val_gen, epochs):
     print("Class Weights:", class_weights)
 
     callbacks = [
-        EarlyStopping(monitor='val_loss', patience=16, restore_best_weights=True),
+        EarlyStopping(monitor='val_loss', patience=8, restore_best_weights=True),
         ModelCheckpoint('best_pneumonia_model.keras', save_best_only=True),
         ReduceLROnPlateau(monitor='val_loss', factor=0.3, patience=2, min_lr=1e-6)
     ]

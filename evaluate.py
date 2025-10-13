@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-#MODEL_PATH = "best_pneumonia_model.keras"
+MODEL_PATH = "best_pneumonia_model.keras"
 #MODEL_PATH = "best_pneumonia_resnet.keras"
-MODEL_PATH = "best_pneumonia_resnet_finetuned.keras"
-DATA_DIR = r"C:\Users\User\Desktop\archive\chest_xray_split_2"
+#MODEL_PATH = "best_pneumonia_resnet_finetuned.keras"
+DATA_DIR = r"C:\Users\User\Desktop\archive\chest_xray_split"
 IMAGE_SIZE = (224, 224)
 BATCH_SIZE = 32
 

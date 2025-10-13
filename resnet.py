@@ -11,7 +11,7 @@ from sklearn.utils.class_weight import compute_class_weight
 IMAGE_SIZE = (224, 224)
 BATCH_SIZE = 32
 EPOCHS = 30
-DATA_DIR = r"C:\Users\User\Desktop\archive\chest_xray_split_2"  # path to dataset
+DATA_DIR = r"C:\Users\User\Desktop\archive\chest_xray_split"  # path to dataset
 
 def load_data_t(data_dir, image_size, batch_size):
     train_datagen = ImageDataGenerator(
