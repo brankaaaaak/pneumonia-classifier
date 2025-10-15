@@ -93,7 +93,6 @@ def build_cnn(image_size):
     return model
 
 def train_model(model, train_gen, val_gen, epochs):
-    # handle imbalance
     class_weights = compute_class_weight(
         class_weight='balanced',
         classes=np.unique(train_gen.classes),
