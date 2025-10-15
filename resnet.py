@@ -13,7 +13,7 @@ BATCH_SIZE = 32
 EPOCHS = 30
 DATA_DIR = r"C:\Users\User\Desktop\archive\chest_xray_split"  # path to dataset
 
-def load_data_t(data_dir, image_size, batch_size):
+def load_data(data_dir, image_size, batch_size):
     train_datagen = ImageDataGenerator(
         rescale=1./255,
         rotation_range=20,
@@ -69,7 +69,7 @@ def build_resnet_transfer(image_size):
     model.compile(optimizer=optimizer, loss='binary_crossentropy', metrics=['accuracy'])
     return model
 
-def train_model_t(model, train_gen, val_gen, epochs):
+def train_model(model, train_gen, val_gen, epochs):
     class_weights = compute_class_weight(
         class_weight='balanced',
         classes=np.unique(train_gen.classes),
@@ -94,11 +94,11 @@ def train_model_t(model, train_gen, val_gen, epochs):
     return history
 
 if __name__ =="__main__":
-    train_gen, val_gen, test_gen = load_data_t(DATA_DIR, IMAGE_SIZE, BATCH_SIZE)
+    train_gen, val_gen, test_gen = load_data(DATA_DIR, IMAGE_SIZE, BATCH_SIZE)
     model = build_resnet_transfer(IMAGE_SIZE)
     model.summary()
 
-    history = train_model_t(model, train_gen, val_gen, EPOCHS)
+    history = train_model(model, train_gen, val_gen, EPOCHS)
 
     plt.figure(figsize=(12,5))
 

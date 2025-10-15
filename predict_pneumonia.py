@@ -4,9 +4,9 @@ import numpy as np
 
 MODEL_PATH = "best_pneumonia_model.keras"
 #IMG_PATH = r"C:\Users\User\Desktop\normal1.jfif" 
-#IMG_PATH = r"C:\Users\User\Desktop\pneumonia2bacterial.jfif"  
+IMG_PATH = r"C:\Users\User\Desktop\pneumonia2bacterial.jfif" 
 #IMG_PATH = r"C:\Users\User\Desktop\pneumonia3viral.jfif"  
-IMG_PATH = r"C:\Users\User\Desktop\pneumoniafungal.avif"   
+#IMG_PATH = r"C:\Users\User\Desktop\pneumoniafungal.avif"  
 
 IMG_SIZE = (224, 224)
 
