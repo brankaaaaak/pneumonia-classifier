@@ -12,6 +12,7 @@ This project focuses on **automated detection of pneumonia** from chest X-ray im
 
 - **Source**: Chest X-ray dataset (5,863 labeled images)
 - **Classes**: `NORMAL`, `PNEUMONIA`
+- **Dataset**: [Chest X-Ray Pneumonia (Kaggle)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
 
 ### Data Split
 - **Training**: 70%  
